@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manners for Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manners for Students</h1>
+        <ul>
+            <li>Always say "Please" and "Thank You."</li>
+            <li>Respect your teachers, elders, and classmates.</li>
+            <li>Listen attentively when someone is speaking.</li>
+            <li>Keep your surroundings clean and organized.</li>
+            <li>Use polite language and avoid rude words.</li>
+            <li>Be punctual and value others' time.</li>
+            <li>Help others in need and show kindness.</li>
+            <li>Maintain good hygiene and dress neatly.</li>
+            <li>Apologize sincerely when making a mistake.</li>
+            <li>Follow rules and respect everyone's space.</li>
+        </ul>
+        <a href="{{ url_for('dashboard.dashboard_home') }}" class="back-button">Back to Dashboard</a>
+    </div>
+</body>
+</html>

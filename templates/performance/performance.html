@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 8px;
+        }
+        #performance-result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Student Performance Prediction</h2>
+    
+    <button onclick="checkPerformance()">Check Performance</button>
+    
+    <div id="performance-result"></div>
+
+    <script>
+        function checkPerformance() {
+            // Get the roll number from the session
+            const rollNumber = '{{ user[2] }}';  // Assuming 'user[2]' holds the roll number
+
+            if (!rollNumber) {
+                alert("Roll number is missing. Please log in again.");
+                return;
+            }
+
+            fetch('/performance/predict_performance', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ roll_number: rollNumber })
+            })
+            .then(response => response.json())
+            .then(data => {
+                let resultElement = document.getElementById("performance-result");
+
+                if (data.error) {
+                    resultElement.innerText = `❌ ${data.error}`;
+                    resultElement.style.color = "red";
+                } else {
+                    let attendance = data.attendance_percentage ? data.attendance_percentage.toFixed(2) : "N/A";
+                    let marks = data.average_marks ? data.average_marks.toFixed(2) : "N/A";
+                    resultElement.innerHTML = `
+                        📊 <strong>Predicted Performance:</strong> ${data.performance_category} <br>
+                        📅 <strong>Attendance:</strong> ${attendance}% <br>
+                        🎯 <strong>Average Marks:</strong> ${marks}
+                    `;
+                    resultElement.style.color = "green";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred while fetching performance data.");
+            });
+        }
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .assignment-card {
+            background: #fff;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .assignment-card:hover {
+            transform: translateY(-5px);
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weekly Assignments</h1>
+
+        <div class="assignment-card">
+            <h2>Python Assignments</h2>
+            <a href="{{ url_for('assignments.python_assignments') }}" class="button">Click Me</a>
+        </div>
+
+        <div class="assignment-card">
+            <h2>Java Assignments</h2>
+            <a href="{{ url_for('assignments.java_assignments') }}" class="button">Click Me</a>
+        </div>
+
+        <div class="assignment-card">
+            <h2>HTML Assignments</h2>
+            <a href="{{ url_for('assignments.html_assignments') }}" class="button">Click Me</a>
+        </div>
+
+        <div class="assignment-card">
+            <h2>CSS Assignments</h2>
+            <a href="{{ url_for('assignments.css_assignments') }}" class="button">Click Me</a>
+        </div>
+
+        <div class="assignment-card">
+            <h2>SQL Assignments</h2>
+            <a href="{{ url_for('assignments.sql_assignments') }}" class="button">Click Me</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; margin: 0; }
+        .container { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .card { background: #007bff; color: white; padding: 15px; border-radius: 5px; margin-bottom: 10px; }
+        .button { background: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; }
+        .red-button { background: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Career Guidance</h2>
+        
+        <!-- Existing Resources Loop -->
+        {% for resource in resources %}
+            <div class="card">
+                <h3>{{ resource[1] }}</h3>
+                <p>{{ resource[2] }}</p>
+                <a href="{{ resource[4] }}" class="button" target="_blank">Learn More</a>
+            </div>
+        {% endfor %}
+
+        <!-- New Roadmap Section -->
+        <div class="card">
+            <h3>Roadmap to Improve Your Coding Skills</h3>
+            <p>Learn how to improve your coding skills from beginner to pro. Follow this structured roadmap to build your knowledge and career in coding.</p>
+            <a href="{{ url_for('roadmap') }}" class="button">Learn More</a> <!-- Link to the new roadmap page -->
+        </div>
+
+        <br>
+        <a href="{{ url_for('dashboard.dashboard_home') }}" class="button red-button">Back to Dashboard</a>
+    </div>
+</body>
+</html>

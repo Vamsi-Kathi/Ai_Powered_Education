@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            flex-wrap: wrap;
+        }
+        .header h1 {
+            font-size: 22px;
+            margin: 0;
+        }
+        .logout {
+            background: red;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .button-green {
+            background: green;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header h1 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .logout {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to the Dashboard</h1>
+            <a href="{{ url_for('auth.logout') }}" class="logout">Logout</a>
+        </div>
+
+        {% if user %}
+            <p>Email: {{ user[1] }}</p>
+            <p>Roll Number: {{ user[2] }}</p>
+        {% else %}
+            <p>No user data found.</p>
+        {% endif %}
+
+        <div class="grid-container">
+            <div class="card">
+                <h2>Student Sem Wise Marks</h2>
+                <a href="{{ url_for('semwise.semwise_home') }}" class="button">Check</a>
+            </div>
+
+            <div class="card">
+                <h2>Career Guidance</h2>
+                <a href="{{ url_for('career.career_home') }}" class="button">Check</a> <!-- Link to Career Guidance -->
+            </div>
+            <div class="card">
+                <h2>Manners for Students</h2>
+                <a href="{{ url_for('manners.manners_home') }}" class="button">Check</a>
+            </div>
+
+            <div class="card">
+                <h2>Weekly Assignment Coding</h2>
+                <a href="{{ url_for('assignments.assignments_home') }}" class="button">Check</a>
+            </div>
+            <div class="card">
+                <h2>Health and Wellbeing</h2>
+                <a href="{{ url_for('health.health_home') }}" class="button">Check</a>
+            </div>
+            
+            <div class="card">
+                <h2>Pollings</h2>
+                <a href="{{ url_for('polls.poll_home') }}" class="button">Check</a>
+            </div>
+            
+            <div class="card">
+                <h2>Events and Contestants</h2>
+                <a href="{{ url_for('events.event_home') }}" class="button">Check</a>
+            </div>
+            <div class="card">
+                <h2>Gaming and Puzzle</h2>
+                <a href="{{ url_for('gaming.gaming_home') }}" class="button">Check</a>
+            </div>
+            <div class="attendance-option">
+                <h3>View Attendance</h3>
+                <a href="{{ url_for('attendance.view_attendance') }}" class="button button-green">View Now</a>
+            </div>
+
+            <!-- Performance Section -->
+            <div id="performance-result"></div>
+<div id="performance-suggestions"></div>
+
+{% if user %}
+<button id="check-performance-button" data-roll-number="{{ user[2] }}">Check Performance</button>
+{% else %}
+    <button disabled>Check Performance (No Data)</button>
+{% endif %}
+ 
+            
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+</body>
+</html>

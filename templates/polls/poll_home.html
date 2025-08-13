@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: auto;
+        }
+        .poll {
+            margin: 15px 0;
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Live Poll</h2>
+    <p>Which programming language do you prefer?</p>
+    <form action="#" method="post">
+        <div class="poll">
+            <input type="radio" name="poll" value="Python"> Python<br>
+            <input type="radio" name="poll" value="Java"> Java<br>
+            <input type="radio" name="poll" value="C++"> C++<br>
+            <input type="radio" name="poll" value="JavaScript"> JavaScript<br>
+        </div>
+        <button type="submit" class="button">Submit Vote</button>
+    </form>
+</div>
+
+</body>
+</html>
